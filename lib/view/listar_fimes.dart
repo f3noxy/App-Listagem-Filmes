@@ -154,7 +154,9 @@ class _ListaFilmesViewState extends State<ListarFilmes> {
                           MaterialPageRoute(
                             builder: (_) => CadastrarEditarFilme(filme: filme),
                           ),
-                        );
+                        ).then((value) {
+                            te(() {});
+                        });
                       },
                     ),
                   ],
