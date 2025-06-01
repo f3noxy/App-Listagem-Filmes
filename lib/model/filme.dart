@@ -30,8 +30,7 @@ class Filme {
       'genero': genero,
       'faixaEtaria': faixaEtaria,
       'duracao': duracao,
-      'pontucao': pontuacao,
-      '_id': id,
+      'pontuacao': pontuacao,
     };
   }
 
@@ -42,10 +41,26 @@ class Filme {
       ano: map['ano'],
       titulo: map['titulo'],
       genero: map['genero'],
-      faixaEtaria: map['genero'],
+      faixaEtaria: map['faixaEtaria'],
       duracao: map['duracao'],
-      pontuacao: map['pontuacao'],
+      pontuacao: (map['pontuacao'] as num).toDouble(),
     );
   }
-  
+
+  factory Filme.fromJson(Map<String, dynamic> map) {
+    return Filme(
+      id: map['id'] != null ? int.tryParse(map['id'].toString()) : null,
+      urlImagem: map['urlImagem'],
+      descricao: map['descricao'],
+      ano: map['ano'],
+      titulo: map['titulo'],
+      genero: map['genero'],
+      faixaEtaria: map['faixaEtaria'],
+      duracao: map['duracao'],
+      pontuacao: map['pontuacao'] != null
+          ? (map['pontuacao'] as num).toDouble()
+          : 0.0,
+    );
+  }
+
 }
